@@ -1,0 +1,46 @@
+# ───── Biometric Data (NEVER commit face data to GitHub) ─────
+*.pkl
+registered_faces.pkl
+
+# ───── Databases ─────
+*.db
+*.sqlite
+*.sqlite3
+
+# ───── Python ─────
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+venv/
+env/
+.venv/
+.env
+
+# ───── Environment & Secrets ─────
+.env
+.env.local
+*.key
+
+# ───── Node / JS ─────
+node_modules/
+.next/
+.cache/
+npm-debug.log*
+
+# ───── OS Files ─────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ───── VS Code ─────
+.vscode/settings.json
+
+# ───── Large Dataset (too big for GitHub free tier) ─────
+*.xlsx

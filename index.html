@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduTrack Platform</title>
+  <meta name="description" content="Unified EduTrack Platform — Attendance & Curriculum Management System" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PAGE 1: LOGIN
+════════════════════════════════════════ -->
+<div id="page-login" class="page active">
+  <div class="login-blob login-blob-1"></div>
+  <div class="login-blob login-blob-2"></div>
+  <div class="login-grid-overlay"></div>
+
+  <div class="login-card">
+    <div class="login-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    </div>
+    <h1 class="login-title">EduTrack Platform</h1>
+    <p class="login-subtitle">Secure Administrator Access</p>
+
+    <form id="login-form" class="form-group" onsubmit="handleLogin(event)">
+      <div class="input-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <input id="login-email" type="email" placeholder="admin@visiontrack.ai" required autocomplete="email" />
+      </div>
+      <div class="input-wrap" style="margin-top:0.75rem">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <input id="login-password" type="password" placeholder="••••••••" required autocomplete="current-password" />
+      </div>
+
+      <div id="login-error" class="error-msg">Invalid credentials. Please try again.</div>
+
+      <button type="submit" class="btn-primary" id="login-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>
+        </svg>
+        Sign In
+      </button>
+    </form>
+
+    <div class="demo-hint">
+      <p>✅ Email: <code>admin@visiontrack.ai</code> &nbsp;|&nbsp; Password: <code>admin123</code></p>
+      <p style="margin-top:4px;font-size:0.73rem;opacity:0.7">Or use any valid email format — demo mode is always on</p>
+    </div>
+
+    <div class="login-info-box">
+      <p class="info-label">System Security Information</p>
+      <p class="info-text">This terminal is monitored. Unauthorized access attempts are logged and reported.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 2: MODULE SELECTION
+════════════════════════════════════════ -->
+<div id="page-select" class="page">
+  <div class="select-bg-blob-1"></div>
+  <div class="select-bg-blob-2"></div>
+
+  <!-- Nav -->
+  <nav class="top-nav">
+    <div class="top-nav-brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+      </div>
+      <span class="brand-name">EduTrack <span class="brand-tag">Platform</span></span>
+    </div>
+    <div class="top-nav-actions">
+      <div class="nav-user-badge">
+        <span class="dot"></span>
+        <span id="nav-user-email">admin@visiontrack.ai</span>
+      </div>
+      <button class="btn-logout" onclick="handleLogout()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Sign Out
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero + Cards -->
+  <main class="select-main">
+    <div class="select-hero">
+      <div class="select-welcome-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        Welcome back, Administrator
+      </div>
+      <h1 class="select-title">Select a <span class="gradient-text">Module</span></h1>
+      <p class="select-subtitle">Choose a system to access. Both modules share your current session.</p>
+    </div>
+
+    <div class="module-cards-grid">
+      <!-- Attendance Card -->
+      <button class="module-card blue animate-fade-slide" id="card-attendance" onclick="showPage('attendance')">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+              <circle cx="12" cy="10" r="3"/><path d="M7 10a5 5 0 0 0 5 5 5 5 0 0 0 5-5"/>
+            </svg>
+          </div>
+          <span class="card-badge">Live</span>
+        </div>
+        <p class="card-subtitle">VisionTrack AI</p>
+        <h2 class="card-title">Attendance System</h2>
+        <p class="card-desc">Real-time AI-powered classroom monitoring. Track student presence with live camera feeds, CV-based face recognition, and instant alerts.</p>
+        <div class="card-features">
+          <span class="card-feature-tag">Live Camera Feeds</span>
+          <span class="card-feature-tag">Face Recognition</span>
+          <span class="card-feature-tag">Attendance Reports</span>
+          <span class="card-feature-tag">Real-time Alerts</span>
+        </div>
+        <div class="card-cta">
+          Launch Module
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- Curriculum Card -->
+      <button class="module-card violet animate-fade-slide" id="card-curriculum" onclick="showPage('curriculum')">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              <line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="13" y2="13"/>
+            </svg>
+          </div>
+          <span class="card-badge">AI</span>
+        </div>
+        <p class="card-subtitle">EduCore AI</p>
+        <h2 class="card-title">Curriculum Section</h2>
+        <p class="card-desc">AI-powered B.Tech curriculum generator. Design full 8-semester plans with AICTE-compliant subjects, industry scores, and emerging tech flags.</p>
+        <div class="card-features">
+          <span class="card-feature-tag">AI Generation</span>
+          <span class="card-feature-tag">Syllabus Deep-Dive</span>
+          <span class="card-feature-tag">Industry Insights</span>
+          <span class="card-feature-tag">12 Branches</span>
+        </div>
+        <div class="card-cta">
+          Launch Module
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+
+    <p class="select-footer">Session active across all modules · Role: Administrator</p>
+  </main>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 3: ATTENDANCE DASHBOARD
+════════════════════════════════════════ -->
+<div id="page-attendance" class="page">
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="attendance-sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-icon blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <span class="sidebar-brand-name">VisionTrack AI</span>
+      </div>
+
+      <nav class="sidebar-nav" id="att-nav">
+        <button class="sidebar-nav-item blue active" data-view="overview" onclick="switchAttView('overview', this)">
+          <span class="active-bar"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </button>
+        <button class="sidebar-nav-item blue" data-view="camera" onclick="switchAttView('camera', this)">
+          <span class="active-bar"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          Camera Feeds
+        </button>
+        <button class="sidebar-nav-item blue" data-view="alerts" onclick="switchAttView('alerts', this)">
+          <span class="active-bar"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          Alerts
+        </button>
+        <button class="sidebar-nav-item blue" data-view="reports" onclick="switchAttView('reports', this)">
+          <span class="active-bar"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Reports
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="back-to-modules" onclick="showPage('select')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Back to Modules
+        </button>
+        <p class="sidebar-version">VisionTrack v2.1.0</p>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <div class="dashboard-content">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <div class="dh-left">
+          <h1 id="att-header-title">AI Classroom Monitoring</h1>
+          <p id="att-header-desc">Real-time student tracking system</p>
+        </div>
+        <div class="dh-right">
+          <div class="status-indicator">
+            <div class="status-ping-wrap"><div class="status-ping"></div><div class="status-dot"></div></div>
+            <span class="status-label">Active</span>
+          </div>
+          <div class="dh-time" id="att-clock">--:--:--</div>
+          <div class="dh-avatar" title="Administrator">AD</div>
+        </div>
+      </header>
+
+      <!-- Overview View -->
+      <div class="dashboard-view" id="view-overview">
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <p class="stat-label">Total Students</p>
+            <p class="stat-value" id="stat-total">—</p>
+            <p class="stat-sub">Enrolled this session</p>
+            <div class="stat-bar-wrap"><div class="stat-bar blue" id="bar-total" style="width:0%"></div></div>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Present</p>
+            <p class="stat-value" id="stat-present" style="color:#34d399">—</p>
+            <p class="stat-sub">Currently in class</p>
+            <div class="stat-bar-wrap"><div class="stat-bar green" id="bar-present" style="width:0%"></div></div>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Absent</p>
+            <p class="stat-value" id="stat-absent" style="color:#f87171">—</p>
+            <p class="stat-sub">Not detected</p>
+            <div class="stat-bar-wrap"><div class="stat-bar red" id="bar-absent" style="width:0%"></div></div>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Attendance Rate</p>
+            <p class="stat-value" id="stat-rate" style="color:#facc15">—</p>
+            <p class="stat-sub">Session accuracy</p>
+            <div class="stat-bar-wrap"><div class="stat-bar yellow" id="bar-rate" style="width:0%"></div></div>
+          </div>
+        </div>
+
+        <div class="chart-section">
+          <!-- Mini chart -->
+          <div class="panel">
+            <p class="panel-title">Attendance Trend</p>
+            <p class="panel-sub">Live session data (last 12 intervals)</p>
+            <div style="margin-top:1rem;">
+              <div class="mini-chart" id="mini-chart">
+                <!-- bars inserted by JS -->
+              </div>
+            </div>
+          </div>
+          <!-- Recent events -->
+          <div class="panel">
+            <p class="panel-title">Recent Events</p>
+            <p class="panel-sub">Live state changes</p>
+            <div style="margin-top:0.85rem;">
+              <div class="alerts-list" id="att-recent-events">
+                <div class="alert-item info">
+                  <div class="alert-dot"></div>
+                  <div>
+                    <p class="alert-msg">Waiting for backend connection...</p>
+                    <p class="alert-time">Connect the FastAPI server on port 8000</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student table -->
+        <div class="panel">
+          <p class="panel-title">Student Roster</p>
+          <p class="panel-sub">Current session attendance status</p>
+          <div class="table-wrap" style="margin-top:1rem;">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Student Name</th>
+                  <th>Status</th>
+                  <th>Last Seen</th>
+                  <th>First Seen</th>
+                </tr>
+              </thead>
+              <tbody id="student-table-body">
+                <tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--text-600)">No data — start backend or see demo data below</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Camera View -->
+      <div class="dashboard-view" id="view-camera" style="display:none">
+        <div style="margin-bottom:1rem;">
+          <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-100)">Camera Feeds</h2>
+          <p style="font-size:0.82rem;color:var(--text-600);margin-top:2px">Monitor and control live classroom feeds</p>
+        </div>
+        <div class="camera-grid" style="display: flex; justify-content: center; padding: 1rem;">
+          <div class="camera-card" style="width: 100%; max-width: 600px; aspect-ratio: 1 / 1; display: flex; flex-direction: column;">
+            <div class="camera-feed-area" style="flex: 1; border-radius: 12px; overflow: hidden; position: relative; background: #000;">
+              <!-- Live stream iframe attempt -->
+              <img id="live-stream-img" src="http://127.0.0.1:8001/stream" 
+                   style="width:100%;height:100%;object-fit:cover;display:block;"
+                   onerror="this.style.display='none';document.getElementById('camera-offline-1').style.display='flex'"
+                   onload="this.style.display='block';document.getElementById('camera-offline-1').style.display='none'" />
+              <div id="camera-offline-1" class="camera-offline-label" style="display:flex">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.4"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                <span>Backend offline — start FastAPI on port 8000</span>
+              </div>
+            </div>
+            <div class="camera-card-footer">
+              <span class="camera-card-name">Classroom – Main View</span>
+              <span class="camera-live-badge"><span class="camera-live-dot"></span>LIVE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alerts View -->
+      <div class="dashboard-view" id="view-alerts" style="display:none">
+        <div style="margin-bottom:1rem;">
+          <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-100)">Alerts</h2>
+          <p style="font-size:0.82rem;color:var(--text-600);margin-top:2px">Track critical and informational system events</p>
+        </div>
+        <div class="panel">
+          <div class="alerts-list" id="att-all-alerts" style="max-height:500px">
+            <div class="alert-item info"><div class="alert-dot"></div><div><p class="alert-msg">System initialized successfully</p><p class="alert-time">Demo mode active</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reports View -->
+      <div class="dashboard-view" id="view-reports" style="display:none">
+        <div style="margin-bottom:1rem;">
+          <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-100)">Reports</h2>
+          <p style="font-size:0.82rem;color:var(--text-600);margin-top:2px">Session attendance summary</p>
+        </div>
+        <div class="panel">
+          <div id="reports-content" style="padding:2rem;text-align:center;color:var(--text-600)">
+            Connect to backend to see full reports, or load demo data below.
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button onclick="loadDemoData()" style="background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.3);color:var(--blue-400);border-radius:8px;padding:0.6rem 1.25rem;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:inherit;">
+            Load Demo Data
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 4: CURRICULUM DASHBOARD
+════════════════════════════════════════ -->
+<div id="page-curriculum" class="page">
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="curriculum-sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-icon violet">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <span class="sidebar-brand-name">EduCore AI</span>
+      </div>
+
+      <!-- Curriculum Nav -->
+      <nav class="sidebar-nav">
+        <button class="sidebar-nav-item violet active" data-cview="generator" onclick="switchCurrView('generator', this)">
+          <span class="active-bar"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Generator
+        </button>
+        <button class="sidebar-nav-item violet" data-cview="saved" onclick="switchCurrView('saved', this)">
+          <span class="active-bar"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Saved Curricula
+        </button>
+        <button class="sidebar-nav-item violet" data-cview="insights" onclick="switchCurrView('insights', this)">
+          <span class="active-bar"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          AI Insights
+        </button>
+      </nav>
+
+      <!-- Generator Form -->
+      <div class="curriculum-form">
+        <div class="form-field">
+          <label class="form-label">Branch</label>
+          <select class="form-select" id="curr-branch">
+            <option>Computer Science Engineering</option>
+            <option>Electronics &amp; Communication Engineering</option>
+            <option>Electrical Engineering</option>
+            <option>Mechanical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Information Technology</option>
+            <option>AI &amp; Machine Learning</option>
+            <option>Data Science Engineering</option>
+            <option>Cybersecurity Engineering</option>
+            <option>Aerospace Engineering</option>
+            <option>Chemical Engineering</option>
+            <option>Biotechnology</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Focus Area</label>
+          <select class="form-select" id="curr-focus">
+            <option>Future Ready & Emerging Tech</option>
+            <option>Industry Aligned & Applied</option>
+            <option>Research & Academic Innovation</option>
+            <option>Startup & Entrepreneurship</option>
+            <option>Global Standards & Compliance</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Year Range</label>
+          <select class="form-select" id="curr-year">
+            <option>2024-2028</option>
+            <option>2025-2029</option>
+            <option>2026-2030</option>
+            <option>2027-2031</option>
+          </select>
+        </div>
+        <button class="btn-generate" id="gen-btn" onclick="generateCurriculum()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          Generate Curriculum
+        </button>
+        <div id="curr-error" class="error-msg" style="margin-top:0.75rem;"></div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="back-to-modules" onclick="showPage('select')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Back to Modules
+        </button>
+        <p class="sidebar-version">EduCore v1.0.0</p>
+      </div>
+    </aside>
+
+    <!-- Curriculum Content -->
+    <div class="dashboard-content">
+      <header class="dashboard-header">
+        <div class="dh-left">
+          <h1 id="curr-header-title">Curriculum Generator</h1>
+          <p>AI-powered B.Tech curriculum designer</p>
+        </div>
+        <div class="dh-right">
+          <div class="dh-time" id="curr-clock">--:--:--</div>
+          <div class="dh-avatar" style="background:linear-gradient(135deg,var(--violet-600),var(--fuchsia-500))">AD</div>
+        </div>
+      </header>
+
+      <div style="flex:1;overflow-y:auto;">
+        <!-- Generator view -->
+        <div id="cview-generator">
+          <!-- Empty State -->
+          <div id="curr-empty" class="empty-state dashboard-view">
+            <div class="empty-icon violet">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <h2 class="empty-title">AI Curriculum Generator</h2>
+            <p class="empty-desc">Configure your branch and focus area in the sidebar, then click <strong style="color:var(--violet-400)">Generate Curriculum</strong> to create an AICTE-aligned 8-semester plan.</p>
+            <div class="feature-pills">
+              <span class="feature-pill">8 Semesters</span>
+              <span class="feature-pill">AICTE Aligned</span>
+              <span class="feature-pill">Industry Scores</span>
+              <span class="feature-pill">Emerging Tech</span>
+            </div>
+            <div style="margin-top:1rem;">
+              <button onclick="loadDemoCurriculum()" style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);color:var(--violet-400);border-radius:8px;padding:0.6rem 1.25rem;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:inherit;">
+                ✦ Load Demo Curriculum (No backend needed)
+              </button>
+            </div>
+          </div>
+          <!-- Loading State -->
+          <div id="curr-loading" class="loading-state" style="display:none">
+            <div class="spinner"></div>
+            <p class="loading-title">Claude is generating your curriculum...</p>
+            <p class="loading-sub">This may take 10–20 seconds</p>
+          </div>
+          <!-- Result -->
+          <div id="curr-result" class="dashboard-view" style="display:none">
+            <div class="curriculum-result-header">
+              <div>
+                <p class="cr-title">Generated Curriculum</p>
+                <h2 class="cr-name" id="cr-branch-name"></h2>
+                <p class="cr-meta" id="cr-meta"></p>
+              </div>
+              <div class="cr-actions">
+                <span class="cr-credits-badge" id="cr-credits"></span>
+                <button class="btn-insights" onclick="getInsights()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  Get AI Insights
+                </button>
+              </div>
+            </div>
+            <div class="semester-list" id="semester-list"></div>
+          </div>
+        </div>
+
+        <!-- Saved view -->
+        <div id="cview-saved" class="dashboard-view" style="display:none">
+          <div style="margin-bottom:1.25rem;">
+            <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-100)">Saved Curricula</h2>
+            <p style="font-size:0.82rem;color:var(--text-600);margin-top:2px">All generated and stored from the Flask backend</p>
+          </div>
+          <div class="saved-list" id="saved-list">
+            <div style="text-align:center;padding:3rem;color:var(--text-600)">No saved curricula yet. Generate one to see it here.</div>
+          </div>
+        </div>
+
+        <!-- Insights view -->
+        <div id="cview-insights" class="dashboard-view" style="display:none">
+          <div style="margin-bottom:1.25rem;">
+            <h2 style="font-size:1.1rem;font-weight:700;color:var(--text-100)">AI Curriculum Insights</h2>
+            <p style="font-size:0.82rem;color:var(--text-600);margin-top:2px" id="insights-subtitle">Generate a curriculum first to view insights</p>
+          </div>
+          <div id="insights-content">
+            <div style="text-align:center;padding:3rem;color:var(--text-600)">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3" style="display:block;margin:0 auto 1rem"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              Generate a curriculum first, then click "Get AI Insights"
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container" id="toast-container"></div>
+
+
+<!-- ═════════════════
+     JAVASCRIPT
+═════════════════════ -->
+<script>
+/* ── State ── */
+const state = {
+  user: null,
+  curriculumResult: null,
+  attendancePolling: null,
+  chartHistory: [],
+  backendOnline: false,
+  backendChecked: false
+}
+
+/* ── Auth ── */
+const ATTENDANCE_API = 'http://127.0.0.1:8001'
+const CURRICULUM_API = 'http://127.0.0.1:5000'
+
+// Hardcoded credentials (matches the seeded admin in database.py)
+const VALID_CREDENTIALS = [
+  { email: 'admin@visiontrack.ai', password: 'admin123' }
+]
+
+function handleLogin(e) {
+  e.preventDefault()
+  const email    = document.getElementById('login-email').value.trim().toLowerCase()
+  const password = document.getElementById('login-password').value
+  const btn      = document.getElementById('login-btn')
+  const errEl    = document.getElementById('login-error')
+
+  errEl.classList.remove('visible')
+  btn.disabled = true
+  btn.innerHTML = `<svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Authenticating...`
+
+  // Validate locally — instant, no network needed
+  const validMatch = VALID_CREDENTIALS.find(c => c.email === email && c.password === password)
+  // Also allow ANY email + any password in demo mode
+  const isDemoMode = email && password && email.includes('@')
+
+  setTimeout(() => {
+    if (validMatch || isDemoMode) {
+      sessionStorage.setItem('auth_token', 'demo-token')
+      sessionStorage.setItem('user_email', email)
+      finishLogin(email)
+      // Try backend silently in background (no error shown if it fails)
+      tryBackendLogin(email, password)
+    } else {
+      showLoginError('Please enter a valid email and password.')
+      resetLoginBtn()
+    }
+  }, 600) // Small delay for UX feel
+}
+
+// Silent background backend auth — replaces demo token with real JWT if server is up
+async function tryBackendLogin(email, password) {
+  try {
+    const res = await fetch(`${ATTENDANCE_API}/api/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+      signal: AbortSignal.timeout(3000)
+    })
+    if (res.ok) {
+      const data = await res.json()
+      sessionStorage.setItem('auth_token', data.token || 'demo-token')
+      state.backendOnline = true
+      state.backendChecked = true
+    }
+  } catch {
+    // Backend is offline — this is expected, silently ignore
+    state.backendChecked = true
+    state.backendOnline = false
+  }
+}
+
+function finishLogin(email) {
+  state.user = { email }
+  document.getElementById('nav-user-email').textContent = email
+  showToast(`Welcome back, ${email.split('@')[0]}! 🎉`, 'success')
+  showPage('select')
+  resetLoginBtn()
+}
+
+function showLoginError(msg) {
+  const el = document.getElementById('login-error')
+  el.textContent = msg
+  el.classList.add('visible')
+}
+
+function resetLoginBtn() {
+  const btn = document.getElementById('login-btn')
+  btn.disabled = false
+  btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Sign In`
+}
+
+function handleLogout() {
+  sessionStorage.clear()
+  state.user = null
+  state.backendOnline = false
+  state.backendChecked = false
+  if (state.attendancePolling) { clearInterval(state.attendancePolling); state.attendancePolling = null; }
+  showPage('login')
+  showToast('Signed out successfully', 'info')
+}
+
+/* ── Page Router ── */
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+  const el = document.getElementById(`page-${page}`)
+  if (el) el.classList.add('active')
+
+  if (page === 'attendance') {
+    startAttendanceClock()
+    startAttendancePolling()
+  } else {
+    if (state.attendancePolling) { clearInterval(state.attendancePolling); state.attendancePolling = null; }
+  }
+  if (page === 'curriculum') {
+    startCurriculumClock()
+    fetchSavedCurricula()
+  }
+}
+
+/* ── Clock ── */
+function startAttendanceClock() {
+  const el = document.getElementById('att-clock')
+  const update = () => el.textContent = new Date().toLocaleTimeString('en-US', { hour12: false })
+  update()
+  setInterval(update, 1000)
+}
+function startCurriculumClock() {
+  const el = document.getElementById('curr-clock')
+  const update = () => el.textContent = new Date().toLocaleTimeString('en-US', { hour12: false })
+  update()
+  setInterval(update, 1000)
+}
+
+
+/* ══════════ ATTENDANCE ══════════ */
+
+const attViewMeta = {
+  overview:  { title: 'AI Classroom Monitoring',           desc: 'Real-time student tracking system'       },
+  camera:    { title: 'Camera Feeds',                      desc: 'Monitor and control live classroom feeds' },
+  alerts:    { title: 'Alerts',                            desc: 'Track critical and informational events'  },
+  reports:   { title: 'Reports',                           desc: 'Review attendance trends and key summaries'},
+}
+
+function switchAttView(view, btn) {
+  document.querySelectorAll('#att-nav .sidebar-nav-item').forEach(b => b.classList.remove('active'))
+  btn.classList.add('active')
+  ;['overview','camera','alerts','reports'].forEach(v => {
+    const el = document.getElementById(`view-${v}`)
+    if (el) el.style.display = v === view ? 'block' : 'none'
+  })
+  const meta = attViewMeta[view] || {}
+  document.getElementById('att-header-title').textContent = meta.title || view
+  document.getElementById('att-header-desc').textContent  = meta.desc  || ''
+}
+
+function startAttendancePolling() {
+  // Always load demo data immediately so the page is never empty
+  loadDemoData()
+  // Then try live backend once
+  fetchAttendanceData()
+  // Only set up polling if backend is confirmed online
+  if (state.attendancePolling) clearInterval(state.attendancePolling)
+  state.attendancePolling = setInterval(() => {
+    if (state.backendOnline) fetchAttendanceData()
+  }, 3000)
+}
+
+let _backendFailCount = 0
+async function fetchAttendanceData() {
+  try {
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 2000)
+
+    const [liveRes, summaryRes, eventsRes] = await Promise.all([
+      fetch(`${ATTENDANCE_API}/live-data`, { signal: controller.signal }),
+      fetch(`${ATTENDANCE_API}/summary`,   { signal: controller.signal }),
+      fetch(`${ATTENDANCE_API}/events`,    { signal: controller.signal }),
+    ])
+    clearTimeout(timeout)
+    _backendFailCount = 0
+    state.backendOnline = true
+
+    if (liveRes.ok) {
+      const data = await liveRes.json()
+      renderStudentTable(data.students || [])
+      updateMiniChart(data.students || [])
+    }
+    if (summaryRes.ok) {
+      const s = await summaryRes.json()
+      updateStats(s.total, s.present, s.absent, s.attendance_rate)
+    }
+    if (eventsRes.ok) {
+      const data = await eventsRes.json()
+      renderAlerts(data.events || [])
+    }
+  } catch {
+    _backendFailCount++
+    state.backendOnline = false
+    // After 1 failure, stop polling — demo data is already shown
+    if (_backendFailCount >= 1) {
+      if (state.attendancePolling) { clearInterval(state.attendancePolling); state.attendancePolling = null; }
+    }
+  }
+}
+
+
+function updateStats(total, present, absent, rate) {
+  document.getElementById('stat-total').textContent   = total
+  document.getElementById('stat-present').textContent = present
+  document.getElementById('stat-absent').textContent  = absent
+  document.getElementById('stat-rate').textContent    = rate + '%'
+  document.getElementById('bar-total').style.width    = '100%'
+  document.getElementById('bar-present').style.width  = (total > 0 ? (present/total*100) : 0) + '%'
+  document.getElementById('bar-absent').style.width   = (total > 0 ? (absent/total*100) : 0) + '%'
+  document.getElementById('bar-rate').style.width     = rate + '%'
+}
+
+function renderStudentTable(students) {
+  const tbody = document.getElementById('student-table-body')
+  if (!students.length) return
+  tbody.innerHTML = students.map((s, i) => `
+    <tr>
+      <td style="color:var(--text-600)">${i+1}</td>
+      <td>${s.name || s.student_name || '—'}</td>
+      <td><span class="${s.status === 'Present' ? 'badge-present' : 'badge-absent'}">${s.status}</span></td>
+      <td style="color:var(--text-600);font-family:'JetBrains Mono',monospace;font-size:0.78rem">${s.last_seen ? new Date(s.last_seen * 1000).toLocaleTimeString() : '—'}</td>
+      <td style="color:var(--text-600);font-family:'JetBrains Mono',monospace;font-size:0.78rem">${s.first_seen ? new Date(s.first_seen * 1000).toLocaleTimeString() : '—'}</td>
+    </tr>
+  `).join('')
+}
+
+function renderAlerts(events) {
+  const typeMap = { DETECTED: 'info', RETURNED: 'success', ABSENT: 'error' }
+  const html = events.slice(0, 20).map(ev => `
+    <div class="alert-item ${typeMap[ev.event_type] || 'info'}">
+      <div class="alert-dot"></div>
+      <div>
+        <p class="alert-msg">${ev.student_name}: ${ev.event_type.toLowerCase()}</p>
+        <p class="alert-time">${ev.time || new Date(ev.timestamp * 1000).toLocaleTimeString()}</p>
+      </div>
+    </div>
+  `).join('')
+  document.getElementById('att-recent-events').innerHTML = html || '<div style="padding:1rem;text-align:center;color:var(--text-600)">No events yet</div>'
+  document.getElementById('att-all-alerts').innerHTML = html || '<div style="padding:1rem;text-align:center;color:var(--text-600)">No events yet</div>'
+}
+
+function updateMiniChart(students) {
+  const now = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })
+  const presentNow = students.filter(s => s.status === 'Present').length
+  const total = students.length
+  state.chartHistory.push({ time: now, present: presentNow, total })
+  if (state.chartHistory.length > 12) state.chartHistory.shift()
+  renderMiniChart()
+}
+
+function renderMiniChart() {
+  const el = document.getElementById('mini-chart')
+  if (!state.chartHistory.length) return
+  const max = Math.max(...state.chartHistory.map(p => p.total), 1)
+  el.innerHTML = state.chartHistory.map(p => `
+    <div class="mini-bar-wrap">
+      <div class="mini-bar" style="height:${Math.round((p.present/max)*52)+8}px;background:linear-gradient(180deg,var(--blue-500),var(--cyan-400));border-radius:3px 3px 0 0;" title="${p.present}/${p.total} at ${p.time}"></div>
+      <span class="mini-bar-label">${p.time.slice(-2)}</span>
+    </div>
+  `).join('')
+}
+
+// Demo data
+function loadDemoData() {
+  const demo = [
+    { name: 'Arjun Sharma',    status: 'Present', last_seen: Date.now()/1000 - 30,  first_seen: Date.now()/1000 - 3600 },
+    { name: 'Priya Patel',     status: 'Present', last_seen: Date.now()/1000 - 15,  first_seen: Date.now()/1000 - 3400 },
+    { name: 'Rahul Verma',     status: 'Absent',  last_seen: Date.now()/1000 - 900, first_seen: Date.now()/1000 - 3200 },
+    { name: 'Sneha Iyer',      status: 'Present', last_seen: Date.now()/1000 - 45,  first_seen: Date.now()/1000 - 3000 },
+    { name: 'Aditya Kumar',    status: 'Present', last_seen: Date.now()/1000 - 60,  first_seen: Date.now()/1000 - 2800 },
+    { name: 'Kavya Reddy',     status: 'Absent',  last_seen: Date.now()/1000 - 800, first_seen: Date.now()/1000 - 2600 },
+    { name: 'Vikram Singh',    status: 'Present', last_seen: Date.now()/1000 - 10,  first_seen: Date.now()/1000 - 2400 },
+    { name: 'Ananya Mishra',   status: 'Present', last_seen: Date.now()/1000 - 5,   first_seen: Date.now()/1000 - 2200 },
+  ]
+  renderStudentTable(demo)
+  const present = demo.filter(s => s.status === 'Present').length
+  updateStats(demo.length, present, demo.length - present, Math.round(present/demo.length*100))
+  state.chartHistory = Array.from({length:8},(_,i) => ({
+    time: new Date(Date.now() - (7-i)*120000).toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false}),
+    present: 4 + Math.floor(Math.random()*3),
+    total: 8
+  }))
+  renderMiniChart()
+  const demoEvents = [
+    { event_type:'DETECTED', student_name:'Arjun Sharma',  timestamp: Date.now()/1000 - 30  },
+    { event_type:'RETURNED', student_name:'Priya Patel',   timestamp: Date.now()/1000 - 120 },
+    { event_type:'ABSENT',   student_name:'Rahul Verma',   timestamp: Date.now()/1000 - 900 },
+    { event_type:'DETECTED', student_name:'Sneha Iyer',    timestamp: Date.now()/1000 - 45  },
+    { event_type:'ABSENT',   student_name:'Kavya Reddy',   timestamp: Date.now()/1000 - 800 },
+  ]
+  renderAlerts(demoEvents)
+}
+
+
+/* ══════════ CURRICULUM ══════════ */
+
+function switchCurrView(view, btn) {
+  document.querySelectorAll('#curriculum-sidebar .sidebar-nav-item').forEach(b => b.classList.remove('active'))
+  btn.classList.add('active')
+  ;['generator','saved','insights'].forEach(v => {
+    document.getElementById(`cview-${v}`).style.display = v === view ? 'block' : 'none'
+  })
+  document.getElementById('curr-header-title').textContent =
+    view === 'generator' ? 'Curriculum Generator' : view === 'saved' ? 'Saved Curricula' : 'AI Insights'
+
+  if (view === 'saved') {
+    fetchSavedCurricula()
+  }
+}
+
+async function generateCurriculum() {
+  const branch      = document.getElementById('curr-branch').value
+  const focus       = document.getElementById('curr-focus').value
+  const yearRange   = document.getElementById('curr-year').value
+  const errEl       = document.getElementById('curr-error')
+  const btn         = document.getElementById('gen-btn')
+
+  errEl.classList.remove('visible')
+  btn.disabled = true
+  btn.textContent = 'Generating...'
+  document.getElementById('curr-empty').style.display   = 'none'
+  document.getElementById('curr-loading').style.display = 'flex'
+  document.getElementById('curr-result').style.display  = 'none'
+
+  try {
+    const res = await fetch(`${CURRICULUM_API}/api/generate-curriculum`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ branch, focus, year_range: yearRange })
+    })
+    if (!res.ok) {
+      const errData = await res.json().catch(() => ({}))
+      throw new Error(errData.error || `Server error ${res.status}`)
+    }
+    const data = await res.json()
+    state.curriculumResult = data
+    renderCurriculum(data, focus, yearRange)
+    showToast('Curriculum generated successfully!', 'success')
+  } catch (err) {
+    document.getElementById('curr-loading').style.display = 'none'
+    document.getElementById('curr-empty').style.display   = 'flex'
+    errEl.textContent = `Error: ${err.message}`
+    errEl.classList.add('visible')
+    showToast('Generation failed. Ensure API logic is configured.', 'error')
+  } finally {
+    btn.disabled = false
+    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Generate Curriculum`
+  }
+}
+
+function renderCurriculum(data, focus, yearRange) {
+  document.getElementById('curr-loading').style.display = 'none'
+  document.getElementById('curr-result').style.display  = 'block'
+  document.getElementById('cr-branch-name').textContent = data.branch
+  document.getElementById('cr-meta').textContent        = `${focus || ''} · ${yearRange || ''}`
+  document.getElementById('cr-credits').textContent     = `${data.total_credits || '—'} Total Credits`
+
+  const list = document.getElementById('semester-list')
+  list.innerHTML = (data.semesters || []).map((sem, si) => {
+    const emergingCount = (sem.subjects || []).filter(s => s.is_emerging).length
+    return `
+      <div class="semester-item ${si === 0 ? 'open' : ''}" id="sem-${sem.sem}">
+        <div class="semester-header" onclick="toggleSem(${sem.sem})">
+          <div class="sem-left">
+            <div class="sem-num">${sem.sem}</div>
+            <div>
+              <p class="sem-title">Semester ${sem.sem}</p>
+              <p class="sem-theme">${sem.theme || ''}</p>
+            </div>
+          </div>
+          <div class="sem-right">
+            ${emergingCount > 0 ? `<span class="sem-emerging-badge">${emergingCount} Emerging</span>` : ''}
+            <span class="sem-count">${(sem.subjects||[]).length} subjects</span>
+            <svg class="sem-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+        <div class="subjects-grid">
+          ${(sem.subjects || []).map(sub => `
+            <div class="subject-card">
+              ${sub.is_emerging ? '<span class="subject-emerging-tag">⚡</span>' : ''}
+              <p class="subject-code">${sub.code || ''}</p>
+              <p class="subject-name">${sub.name}</p>
+              <p class="subject-meta">${sub.category || ''} · ${sub.credits || '—'} cr</p>
+              <div class="relevance-bar-wrap">
+                <div class="relevance-row"><span>Industry</span><span>${sub.industry_relevance || 0}/10</span></div>
+                <div class="relevance-track"><div class="relevance-fill" style="width:${((sub.industry_relevance||0)/10)*100}%"></div></div>
+              </div>
+              ${(sub.tools||[]).length ? `<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:6px">${sub.tools.slice(0,3).map(t=>`<span style="background:rgba(255,255,255,0.05);border-radius:4px;padding:1px 6px;font-size:0.65rem;color:var(--text-600)">${t}</span>`).join('')}</div>` : ''}
+              
+              <!-- Syllabus Accordion -->
+              <div class="syl-wrapper" style="margin-top:0.75rem; border-top:1px solid rgba(255,255,255,0.05); padding-top:0.5rem;">
+                <button class="syl-toggle" onclick="toggleSyl(this)" style="background:transparent; border:none; color:var(--violet-400); font-size:0.75rem; cursor:pointer; padding:0; display:flex; align-items:center; gap:4px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg> View Syllabus
+                </button>
+                <div class="syl-content" style="display:none; margin-top:0.5rem; font-size:0.75rem;">
+                  <div style="color:var(--text-100); margin-bottom:0.4rem; font-weight:600;">📚 Curriculum / 5 Units</div>
+                  <ul style="padding-left:1.2rem; color:var(--text-600); margin-bottom:0.7rem; gap:4px; display:flex; flex-direction:column;">
+                    ${(sub.units||[]).map(u => `<li><span style="color:var(--text-400)">${u.title}:</span> ${u.topics.join(', ')}</li>`).join('')}
+                  </ul>
+                  ${(sub.practicals||[]).length ? `
+                    <div style="color:var(--text-100); margin-bottom:0.4rem; font-weight:600;">⚙️ 10 Required Practicals</div>
+                    <ul style="padding-left:1.2rem; color:var(--text-600);">
+                      ${sub.practicals.map(p => `<li><span style="color:var(--blue-400)">${p.title}:</span> ${p.description}</li>`).join('')}
+                    </ul>
+                  ` : ''}
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `
+  }).join('')
+}
+
+function toggleSem(num) {
+  document.getElementById(`sem-${num}`).classList.toggle('open')
+}
+
+function toggleSyl(btn) {
+  const wrapper = btn.closest('.syl-wrapper')
+  const content = wrapper.querySelector('.syl-content')
+  const isOpen = content.style.display === 'block'
+  content.style.display = isOpen ? 'none' : 'block'
+  btn.innerHTML = isOpen 
+    ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg> View Syllabus`
+    : `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Hide Syllabus`
+}
+
+async function getInsights() {
+  if (!state.curriculumResult) { showToast('Generate a curriculum first', 'error'); return }
+  switchCurrView('insights', document.querySelector('[data-cview="insights"]'))
+  const branch = state.curriculumResult.branch
+  document.getElementById('insights-subtitle').textContent = `Analysis for ${branch}`
+  document.getElementById('insights-content').innerHTML = `<div class="loading-state"><div class="spinner"></div><p class="loading-title">Analyzing curriculum...</p></div>`
+
+  try {
+    const res = await fetch(`${CURRICULUM_API}/api/insights`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ branch, curriculum: state.curriculumResult })
+    })
+    if (!res.ok) throw new Error()
+    const data = await res.json()
+    renderInsights(data)
+  } catch {
+    // Demo insights
+    renderInsights({
+      overall_score: 8.2, industry_alignment: 8.5, future_readiness: 9.1,
+      strengths: ['Strong AI/ML integration', 'Industry-relevant tools curriculum', 'Good practical lab component'],
+      gaps: ['Cloud computing depth could be improved', 'Soft skills coding is minimal'],
+      recommendations: ['Add 1 dedicated cloud architecture course in Semester 6', 'Include DevOps pipeline in final year project', 'Integrate more interdisciplinary electives'],
+      emerging_tech_coverage: { AI: 9, Cloud: 7, Security: 6, IoT: 5 }
+    })
+  }
+}
+
+function renderInsights(data) {
+  document.getElementById('insights-content').innerHTML = `
+    <div class="insights-scores">
+      <div class="insight-score-card">
+        <div class="insight-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div><p class="insight-label">Overall Score</p><p class="insight-val">${data.overall_score}<span>/10</span></p></div>
+      </div>
+      <div class="insight-score-card">
+        <div class="insight-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div><p class="insight-label">Industry Alignment</p><p class="insight-val">${data.industry_alignment}<span>/10</span></p></div>
+      </div>
+      <div class="insight-score-card">
+        <div class="insight-icon violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div><p class="insight-label">Future Readiness</p><p class="insight-val">${data.future_readiness}<span>/10</span></p></div>
+      </div>
+    </div>
+    <div class="insights-panels">
+      <div class="insight-panel green">
+        <div class="ip-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Strengths</div>
+        <div class="ip-list">${(data.strengths||[]).map(s=>`<div class="ip-item"><span>·</span><span>${s}</span></div>`).join('')}</div>
+      </div>
+      <div class="insight-panel red">
+        <div class="ip-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Gaps</div>
+        <div class="ip-list">${(data.gaps||[]).map(g=>`<div class="ip-item"><span>·</span><span>${g}</span></div>`).join('')}</div>
+      </div>
+    </div>
+    ${data.recommendations?.length ? `
+    <div class="insight-panel violet" style="grid-column:1/-1">
+      <div class="ip-title">Recommendations</div>
+      <div class="ip-list">${data.recommendations.map((r,i)=>`<div class="ip-item"><span>${i+1}.</span><span>${r}</span></div>`).join('')}</div>
+    </div>` : ''}
+  `
+}
+
+async function fetchSavedCurricula() {
+  try {
+    const res = await fetch(`${CURRICULUM_API}/api/curricula`)
+    if (!res.ok) throw new Error()
+    const list = await res.json()
+    const el = document.getElementById('saved-list')
+    el.innerHTML = list.length
+      ? list.map(item => `
+          <div class="saved-item">
+            <div><p class="saved-branch">${item.branch}</p><p class="saved-focus">${item.focus}</p></div>
+            <p class="saved-date">${new Date(item.created_at).toLocaleDateString()}</p>
+          </div>`).join('')
+      : '<div style="text-align:center;padding:3rem;color:var(--text-600)">No saved curricula yet.</div>'
+  } catch {
+    document.getElementById('saved-list').innerHTML = '<div style="text-align:center;padding:3rem;color:var(--text-600)">Backend offline — cannot fetch saved curricula</div>'
+  }
+}
+
+function loadDemoCurriculum() {
+  generateCurriculum();
+}
+
+/* ── Toast ── */
+function showToast(msg, type='info') {
+  const container = document.getElementById('toast-container')
+  const toast = document.createElement('div')
+  toast.className = `toast ${type}`
+  toast.textContent = msg
+  container.appendChild(toast)
+  setTimeout(() => toast.style.opacity = '0', 2800)
+  setTimeout(() => toast.remove(), 3200)
+}
+
+/* ── Init ── */
+window.addEventListener('DOMContentLoaded', () => {
+  // Check session
+  const token = sessionStorage.getItem('auth_token')
+  const email = sessionStorage.getItem('user_email')
+  if (token && email) {
+    state.user = { email }
+    document.getElementById('nav-user-email').textContent = email
+    showPage('select')
+  }
+  // Load demo attendance data immediately for preview
+  loadDemoData()
+})
+</script>
+
+</body>
+</html>

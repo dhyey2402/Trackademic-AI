@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+opencv-python
+sqlalchemy
+psycopg2-binary
+numpy
+passlib[bcrypt]
+pyjwt

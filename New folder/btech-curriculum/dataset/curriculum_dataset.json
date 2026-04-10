@@ -1,0 +1,10 @@
+{
+  "branches": [
+    "Computer Science Engineering", "Electronics & Communication Engineering", 
+    "Electrical Engineering", "Mechanical Engineering", "Civil Engineering", 
+    "Information Technology", "AI & Machine Learning", "Data Science Engineering", 
+    "Cybersecurity Engineering", "Aerospace Engineering", "Chemical Engineering", 
+    "Biotechnology"
+  ],
+  "note": "Full AI-generated data rows from Python script are meant to populate this structure via DB ingestion."
+}

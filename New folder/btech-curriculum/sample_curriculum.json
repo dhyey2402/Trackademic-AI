@@ -1,0 +1,106 @@
+{
+  "program": "Computer Science Engineering",
+  "focus": "Artificial Intelligence",
+  "years": [
+    {
+      "year": 1,
+      "semesters": [
+        {
+          "semester": 1,
+          "subjects": [
+            {
+              "name": "Engineering Mathematics I",
+              "description": "Fundamental calculus, linear algebra, and differential equations required for engineering analysis.",
+              "purpose": "Foundation for all numerical engineering subjects.",
+              "skills_gained": ["Mathematical Modeling", "Statistical Analysis", "Problem Solving"],
+              "real_world_applications": ["Structural Analysis", "Signal Processing", "Financial Modeling"],
+              "modules": [
+                {
+                  "module_name": "Module 1: Linear Algebra",
+                  "topics": ["Matrices", "Eigenvalues", "Eigenvectors", "Rank of Matrix"],
+                  "practicals": ["Matrix operations using MATLAB", "Finding Rank of Matrix"],
+                  "tools": ["MATLAB", "WolframAlpha"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2,
+      "semesters": [
+        {
+          "semester": 3,
+          "subjects": [
+            {
+              "name": "Data Structures & Algorithms",
+              "description": "In-depth exploration of Data Structures & Algorithms with focus on industry-relevant implementation and theoretical depth.",
+              "purpose": "To bridge the gap between basic concepts and modern computing standards.",
+              "skills_gained": ["Advanced Problem Solving", "Data Structures Proficiency", "System Design"],
+              "real_world_applications": ["High-performance software", "Efficient Search Engines"],
+              "modules": [
+                {
+                  "module_name": "Module 1: Basic Linear Structures",
+                  "topics": ["Arrays", "Linked Lists", "Stacks", "Queues"],
+                  "practicals": ["Implementation of Stack using Linked List"],
+                  "tools": ["C++", "Python", "GDB"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "year": 3,
+      "semesters": [
+        {
+          "semester": 5,
+          "subjects": [
+            {
+              "name": "Artificial Intelligence Basics",
+              "description": "Core concepts of AI including heuristic search, knowledge representation, and game theory.",
+              "purpose": "Foundation for building intelligent systems.",
+              "skills_gained": ["Search Algorithms", "Agent Design", "Logic"],
+              "real_world_applications": ["Pathfinding in Maps", "Recommendation Engines"],
+              "modules": [
+                {
+                  "module_name": "Module 1: Logic & Search",
+                  "topics": ["A* Search", "Minimax", "Propositional Logic"],
+                  "practicals": ["Implementing A* for Grid Search"],
+                  "tools": ["Python", "Jupyter"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "year": 4,
+      "semesters": [
+        {
+          "semester": 7,
+          "subjects": [
+            {
+              "name": "Artificial Intelligence - Advanced Applications",
+              "description": "Deployment and optimization of AI models in enterprise environments.",
+              "purpose": "Industry readiness for AI engineers.",
+              "skills_gained": ["Model Deployment", "Scalable AI", "Ethics in AI"],
+              "real_world_applications": ["Enterprise Chatbots", "Predictive Maintenance"],
+              "modules": [
+                {
+                  "module_name": "Module 1: Deep Learning Integration",
+                  "topics": ["Neural Networks", "CNNs", "Transfer Learning"],
+                  "practicals": ["Training an Image Classifier"],
+                  "tools": ["PyTorch", "TensorFlow", "CUDA"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
