@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+﻿import { useEffect, useState } from "react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useAuth } from "@/hooks/AuthContext"
 import {
@@ -75,7 +75,7 @@ export function DashboardHeader({ title, description }: DashboardHeaderProps) {
               <div className="flex flex-col space-y-1">
                 <p className="text-sm font-medium leading-none">Administrator</p>
                 <p className="text-xs leading-none text-muted-foreground">
-                  {user?.email || "admin@visiontrack.ai"}
+                  {user?.email || "admin@TrackAdemic AI.ai"}
                 </p>
               </div>
             </DropdownMenuLabel>

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect, useCallback } from "react"
 import { curriculumApi, type Curriculum, type SavedCurriculum, type CurriculumInsights } from "@/lib/curriculumApi"
@@ -126,7 +126,7 @@ export default function CurriculumDashboard() {
               <BookOpen className="size-4 text-white" />
             </div>
             <div>
-              <p className="font-bold text-white text-sm">EduCore AI</p>
+              <p className="font-bold text-white text-sm">TrackAdemic AI</p>
               <p className="text-[10px] text-slate-500">Curriculum Generator</p>
             </div>
           </div>

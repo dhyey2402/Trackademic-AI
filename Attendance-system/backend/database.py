@@ -1,4 +1,4 @@
-"""
+﻿"""
 Engineer 2: Database Layer
 SQLite-based persistent storage for attendance sessions, events, and logs.
 Uses SQLAlchemy Core (no ORM) for simplicity and zero extra dependencies.
@@ -82,7 +82,7 @@ def init_db():
 
 def seed_admin():
     """Create default admin if not exists."""
-    admin_email = "admin@visiontrack.ai"
+    admin_email = "admin@TrackAdemic AI.ai"
     admin_pass = "admin123"
     
     conn = get_conn()

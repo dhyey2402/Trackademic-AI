@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from 'react-router-dom';
+﻿import { Routes, Route, Link } from 'react-router-dom';
 import Generator from './pages/Generator';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
       <nav className="border-b border-gray-800 p-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <span className="text-accent font-bold text-xl">EduCore AI</span>
+            <span className="text-accent font-bold text-xl">TrackAdemic AI</span>
           </div>
           <div className="flex space-x-6 text-sm">
             <Link to="/" className="text-gray-300 hover:text-white">Dashboard</Link>

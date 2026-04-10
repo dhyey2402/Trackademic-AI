@@ -1,5 +1,5 @@
-"""
-main.py — VisionTrack AI Backend (API-only mode)
+﻿"""
+main.py — TrackAdemic AI AI Backend (API-only mode)
 Runs on port 8000 without requiring a camera or DeepFace.
 Camera/CV features degrade gracefully when the camera is offline.
 """
@@ -15,7 +15,7 @@ import time
 from database import init_db, verify_user
 from state_engine import state_engine
 
-app = FastAPI(title="VisionTrack AI Backend", version="2.1.0")
+app = FastAPI(title="TrackAdemic AI AI Backend", version="2.1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -63,7 +63,7 @@ def startup_event():
     # Start state engine session
     session_id = state_engine.start_session(label="Live Classroom Session")
     print(f"[OK] StateEngine session started [{session_id}]")
-    print("\nVisionTrack API running on http://0.0.0.0:8000")
+    print("\nTrackAdemic AI API running on http://0.0.0.0:8000")
     print("   Docs: http://127.0.0.1:8000/docs")
 
 

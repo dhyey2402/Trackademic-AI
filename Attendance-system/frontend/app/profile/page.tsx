@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useAuth } from "@/hooks/AuthContext"
 import { Button } from "@/components/ui/button"
@@ -14,7 +14,7 @@ export default function ProfilePage() {
 
   // For a hackathon, we can use some mock data for fields the DB doesn't have yet
   const profileDetails = [
-    { label: "Email Address", value: user?.email || "admin@visiontrack.ai", icon: Mail },
+    { label: "Email Address", value: user?.email || "admin@TrackAdemic AI.ai", icon: Mail },
     { label: "Account Role", value: "System Administrator", icon: Shield, badge: "Master Access" },
     { label: "Member Since", value: "April 2026", icon: Calendar },
     { label: "Last Active", value: new Date().toLocaleDateString(), icon: Clock },
@@ -42,7 +42,7 @@ export default function ProfilePage() {
                 </AvatarFallback>
               </Avatar>
               <h2 className="mt-6 text-2xl font-bold text-white">Administrator</h2>
-              <p className="text-sm text-slate-400">VisionTrack Control Center</p>
+              <p className="text-sm text-slate-400">TrackAdemic AI Control Center</p>
               <div className="mt-6 flex justify-center">
                 <Badge variant="outline" className="border-emerald-500/50 bg-emerald-500/10 text-emerald-400">
                   <div className="mr-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />

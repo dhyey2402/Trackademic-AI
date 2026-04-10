@@ -1,4 +1,4 @@
-# EduCore AI System
+﻿# TrackAdemic AI System
 Full Stack B.Tech Curriculum ERP System
 
 ## Backend

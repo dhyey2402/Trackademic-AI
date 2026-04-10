@@ -1,7 +1,7 @@
-@echo off
-title EduTrack Platform - Dev Server
+﻿@echo off
+title TrackAdemic AI - Dev Server
 echo ==============================================
-echo   EduTrack Platform - Starting Dev Server
+echo   TrackAdemic AI - Starting Dev Server
 echo ==============================================
 echo.
 

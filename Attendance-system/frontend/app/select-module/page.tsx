@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useAuth } from "@/hooks/AuthContext"
 import { useRouter } from "next/navigation"
@@ -9,7 +9,7 @@ const modules = [
   {
     id: "attendance",
     title: "Attendance System",
-    subtitle: "VisionTrack AI",
+    subtitle: "TrackAdemic AI AI",
     description:
       "Real-time AI-powered classroom monitoring. Track student presence with live camera feeds, CV-based face recognition, and instant alerts.",
     icon: Monitor,
@@ -23,7 +23,7 @@ const modules = [
   {
     id: "curriculum",
     title: "Curriculum Section",
-    subtitle: "EduCore AI",
+    subtitle: "TrackAdemic AI",
     description:
       "AI-powered B.Tech curriculum generator. Design full 8-semester plans with AICTE-compliant subjects, industry scores, and emerging tech flags.",
     icon: BookOpen,
@@ -72,7 +72,7 @@ export default function SelectModulePage() {
             <Layers className="size-5 text-white" />
           </div>
           <div>
-            <span className="text-lg font-bold text-white tracking-tight">EduTrack</span>
+            <span className="text-lg font-bold text-white tracking-tight">TrackAdemic AI</span>
             <span className="ml-2 text-xs text-slate-500 font-medium">Platform</span>
           </div>
         </div>

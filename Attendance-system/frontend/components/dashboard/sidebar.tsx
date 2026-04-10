@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { cn } from "@/lib/utils"
 import Link from "next/link"
@@ -48,7 +48,7 @@ export function DashboardSidebar({
           <Eye className="size-4 text-white" />
         </div>
         <span className="text-lg font-semibold text-sidebar-foreground">
-          VisionTrack AI
+          TrackAdemic AI AI
         </span>
       </div>
 
@@ -103,7 +103,7 @@ export function DashboardSidebar({
           Back to Modules
         </Link>
         <p className="text-xs text-sidebar-foreground/30 px-3">
-          VisionTrack v2.1.0
+          TrackAdemic AI v2.1.0
         </p>
       </div>
     </aside>

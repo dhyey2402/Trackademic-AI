@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { useAuth } from "@/hooks/AuthContext"
@@ -51,7 +51,7 @@ export default function LoginPage() {
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/20 text-blue-400">
             <ShieldCheck className="h-7 w-7" />
           </div>
-          <CardTitle className="text-2xl font-bold tracking-tight text-white">VisionTrack AI</CardTitle>
+          <CardTitle className="text-2xl font-bold tracking-tight text-white">TrackAdemic AI AI</CardTitle>
           <CardDescription className="text-slate-400">
             Secure Administrator Access
           </CardDescription>
@@ -63,7 +63,7 @@ export default function LoginPage() {
                 <Mail className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
                 <Input
                   type="email"
-                  placeholder="admin@visiontrack.ai"
+                  placeholder="admin@TrackAdemic AI.ai"
                   className="border-white/10 bg-slate-950/50 pl-10 text-white placeholder:text-slate-600 focus:border-blue-500/50 focus:ring-blue-500/20"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

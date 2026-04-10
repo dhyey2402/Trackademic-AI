@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Body
+﻿from fastapi import FastAPI, HTTPException, Body
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -8,7 +8,7 @@ from cv_engine import SmartVisionEngine
 from state_engine import state_engine
 from database import verify_user
 
-app = FastAPI(title="VisionTrack AI Backend")
+app = FastAPI(title="TrackAdemic AI AI Backend")
 
 app.add_middleware(
     CORSMiddleware,
